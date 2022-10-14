@@ -1,0 +1,7 @@
+# Visual Studio Projects
+*/**.vcxproj
+*.sln
+
+# Build files
+bin/**
+bin-int/**
