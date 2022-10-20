@@ -2,16 +2,19 @@ project "sandbox"
 kind "ConsoleApp"
 language "C++"
 
-targetdir("%{wks.location}/bin" .. out_dir .. "%{prj.name}%")
-objdir("%{wks.location}/bin-int" .. out_dir .. "%{prj.name}%")
+targetdir("../bin/" .. out_dir .. "/%{prj.name}")
+objdir("../bin-int/" .. out_dir .. "/%{prj.name}")
 
-files {"./src/**.h", "./src/**.cpp"}
+files {"src/**.h", "src/**.cpp"}
 
 includedirs {
-  "../physicx/src/"
+  "../physicx/src/",
+  "vendor/include"
 }
 
-links {"physicx"}
+libdirs {"vendor/libs"}
+
+links {"physicx.dll", "glfw3.lib"}
 
 filter "system:windows"
 cppdialect "C++17"
